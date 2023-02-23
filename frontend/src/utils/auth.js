@@ -1,4 +1,4 @@
-export const baseUrl = 'https://auth.nomoreparties.co';
+export const baseUrl = 'https://api.mesto.ghostwriter.nomoredomains.work';
 
 export const register = (data) => {
   return fetch(`${baseUrl}/signup`, {
