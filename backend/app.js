@@ -29,6 +29,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 const options = {
   origin: [
     'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
+    'https://api.mesto.ghostwriter.nomoredomains.work/signup',
     'https://mesto.ghostwriter.nomoredomains.work',
     'http://mesto.ghostwriter.nomoredomains.work',
     'localhost:3000',
