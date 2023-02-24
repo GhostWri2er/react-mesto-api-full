@@ -20,7 +20,7 @@ const auth = (req, res, next) => {
     // отправим ошибку, если не получилось
     return res
       .status(401)
-      .send({ message: 'Необходима авторизация' });
+      .send({ message: 'Ошибка токена' });
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
