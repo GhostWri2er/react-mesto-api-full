@@ -2,7 +2,6 @@
   "name": "express-mesto-gha",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
