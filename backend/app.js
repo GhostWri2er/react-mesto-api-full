@@ -13,10 +13,10 @@ const { errors, celebrate, Joi } = require('celebrate');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
+// eslint-disable-next-line import/no-unresolved
+const cors = require('cors');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
-const cors = require('./middlewares/cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -25,6 +25,21 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
+
+const options = {
+  origin: [
+    'https://mesto.ghostwriter.nomoredomains.work',
+    'http://mesto.ghostwriter.nomoredomains.work',
+    'localhost:3000',
+    'https://mesto.ghostwriter.nomoredomains.work/users/me',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+app.use('*', cors(options));
 
 app.use(cookieParser());
 
@@ -56,7 +71,6 @@ app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
 app.use(errorLogger);
-app.use(cors);
 
 app.use('*', (req, res) => res.status(404).send({ message: 'Страница не найдена' }));
 
