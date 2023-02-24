@@ -14,7 +14,7 @@ const { errors, celebrate, Joi } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // eslint-disable-next-line import/no-unresolved
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 
@@ -26,22 +26,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-const options = {
-  origin: [
-    'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
-    'https://api.mesto.ghostwriter.nomoredomains.work/signup',
-    'https://mesto.ghostwriter.nomoredomains.work',
-    'http://mesto.ghostwriter.nomoredomains.work',
-    'localhost:3000',
-    'https://mesto.ghostwriter.nomoredomains.work/users/me',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-app.use('*', cors(options));
+app.use(cors);
 
 app.use(cookieParser());
 
