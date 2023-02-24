@@ -1,6 +1,8 @@
 const allowedCors = [
   'https://mesto.ghostwriter.nomoredomains.work/',
   'http://mesto.ghostwriter.nomoredomains.work/',
+  'https://api.mesto.ghostwriter.nomoredomains.work/signup',
+  'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
   'localhost:3000',
 ];
 
