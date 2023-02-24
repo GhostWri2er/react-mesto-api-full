@@ -16,6 +16,7 @@ const cookieParser = require('cookie-parser');
 
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
+const cors = require('./middlewares/cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -55,6 +56,7 @@ app.use('/users', userRouter);
 app.use('/cards', cardRouter);
 
 app.use(errorLogger);
+app.use(cors);
 
 app.use('*', (req, res) => res.status(404).send({ message: 'Страница не найдена' }));
 
