@@ -133,7 +133,7 @@ const login = (req, res) => {
 
       return res.send({ token });
     })
-    .catch((err) => res.status(401).send({ message: err.message }));
+    .catch((err) => res.status(401).send({ message: `Ошибка ${err.name}123` }));
 };
 
 module.exports = {
