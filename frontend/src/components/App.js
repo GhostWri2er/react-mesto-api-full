@@ -170,7 +170,7 @@ function App() {
       .then((res) => {
         if (res) {
           setStatus('Ok');
-          history.push('/sign-in');
+          history.push('/signin');
         }
       })
       .catch((err) => {
@@ -205,7 +205,7 @@ function App() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     setEmail('');
-    history.push('/sign-in');
+    history.push('/signin');
   };
 
   return (
