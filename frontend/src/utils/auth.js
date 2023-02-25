@@ -5,6 +5,7 @@ export const register = (data) => {
     method: 'POST',
     credentials: 'include',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email: data.email, password: data.password }),
@@ -16,6 +17,7 @@ export const login = (data) => {
     method: 'POST',
     credentials: 'include',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email: data.email, password: data.password }),
@@ -27,6 +29,7 @@ export const checkToken = (jwt) => {
     method: 'GET',
     credentials: 'include',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${jwt}`,
     },
