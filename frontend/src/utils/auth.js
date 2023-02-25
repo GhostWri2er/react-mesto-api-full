@@ -9,7 +9,7 @@ export const register = (data) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email: data.email, password: data.password }),
+    body: JSON.stringify({ "email": data.email, "password": data.password }),
   }).then((res) => checkResponse(res));
 };
 
