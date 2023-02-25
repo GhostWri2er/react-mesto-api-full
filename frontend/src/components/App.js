@@ -167,12 +167,10 @@ function App() {
   const handleRegister = (data) => {
     auth
       .register(data)
-      .then((res) => {
-        console.log(res)
-        if (res) {
-          setStatus('Ok');
-          history.push('/sign-in');
-        }
+      .then(() => {
+        setStatus('Ok');
+        history.push('/sign-in');
+        
       })
       .catch((err) => {
         setStatus('error');
