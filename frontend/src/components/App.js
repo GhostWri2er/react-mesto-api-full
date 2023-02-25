@@ -168,9 +168,10 @@ function App() {
     auth
       .register(data)
       .then((res) => {
+        console.log(res)
         if (res) {
           setStatus('Ok');
-          history.push('/signin');
+          history.push('/sign-in');
         }
       })
       .catch((err) => {
@@ -224,11 +225,11 @@ function App() {
               onCardClick={handleCardClick}
             />
           </ProtectedRoute>
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login onLogin={handleLogin} />
           </Route>
 
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register onRegister={handleRegister} />
           </Route>
 

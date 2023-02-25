@@ -4,11 +4,13 @@ const allowedCors = [
   'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
   'https://api.mesto.ghostwriter.nomoredomains.work/cards',
   'https://api.mesto.ghostwriter.nomoredomains.work/signup',
+  'https://localhost:3000/signup',
+  'http://localhost:3000/signup',
   'localhost:3000',
 ];
 
 // eslint-disable-next-line consistent-return
-module.exports = (req, res, next) => {
+const cors = (req, res, next) => {
   const { method } = req;
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
@@ -27,4 +29,8 @@ module.exports = (req, res, next) => {
   }
 
   return next();
+};
+
+module.exports = {
+  cors,
 };

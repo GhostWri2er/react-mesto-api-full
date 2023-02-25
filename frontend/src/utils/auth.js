@@ -3,6 +3,7 @@ export const baseUrl = 'https://api.mesto.ghostwriter.nomoredomains.work';
 export const register = (data) => {
   return fetch(`${baseUrl}/signup`, {
     method: 'POST',
+    mode: 'no-cors',
     credentials: 'include',
     headers: {
       'Accept': 'application/json',
@@ -15,6 +16,7 @@ export const register = (data) => {
 export const login = (data) => {
   return fetch(`${baseUrl}/signin`, {
     method: 'POST',
+    mode: 'no-cors',
     credentials: 'include',
     headers: {
       'Accept': 'application/json',
@@ -27,6 +29,7 @@ export const login = (data) => {
 export const checkToken = (jwt) => {
   return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
+    mode: 'no-cors',
     credentials: 'include',
     headers: {
       'Accept': 'application/json',

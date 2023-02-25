@@ -19,7 +19,6 @@ function Register({ onRegister }) {
     e.preventDefault();
     if (data.password) {
       const { email, password } = data;
-      console.log({ email, password });
       onRegister({ email, password });
     }
   };
