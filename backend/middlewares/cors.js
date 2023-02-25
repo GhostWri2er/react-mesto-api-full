@@ -3,6 +3,7 @@ const allowedCors = [
   'http://mesto.ghostwriter.nomoredomains.work/',
   'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
   'https://api.mesto.ghostwriter.nomoredomains.work/cards',
+  'https://api.mesto.ghostwriter.nomoredomains.work/signup',
   'localhost:3000',
 ];
 
@@ -15,7 +16,7 @@ module.exports = (req, res, next) => {
   // проверяем, что источник запроса есть среди разрешённых
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Credentials', 'true');
   }
   // Если это предварительный запрос, добавляем нужные заголовки
   if (method === 'OPTIONS') {
@@ -25,5 +26,5 @@ module.exports = (req, res, next) => {
     return res.end();
   }
 
-  next();
+  return next();
 };
