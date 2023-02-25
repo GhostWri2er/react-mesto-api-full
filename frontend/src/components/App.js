@@ -171,7 +171,7 @@ function App() {
         console.log(res)
         if (res) {
           setStatus('Ok');
-          history.push('/sign-in');
+          history.push('/signin');
         }
       })
       .catch((err) => {
