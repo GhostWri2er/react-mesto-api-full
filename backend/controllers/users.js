@@ -51,15 +51,7 @@ const createUser = (req, res) => {
     .then((hash) => User.create({
       email, password: hash, name, avatar, about,
     }))
-    .then((user) => res.send({
-      data: {
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-        _id: user._id,
-      },
-    }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.code && err.code === 11000) {
         return res.status(409).send({ message: 'Пользователь с такой почтой уже зарегистрирован' });

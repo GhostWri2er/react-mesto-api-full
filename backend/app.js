@@ -26,25 +26,27 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-const options = {
-  origin: [
-    'https://mesto.ghostwriter.nomoredomains.work',
-    'http://mesto.ghostwriter.nomoredomains.work',
-    'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
-    'https://api.mesto.ghostwriter.nomoredomains.work/cards',
-    'https://api.mesto.ghostwriter.nomoredomains.work/signup',
-    'https://localhost:3000',
-    'http://localhost:3000',
-    'localhost:3000',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+const allowedCors = [
+  'https://mesto.ghostwriter.nomoredomains.work',
+  'http://mesto.ghostwriter.nomoredomains.work',
+  'https://api.mesto.ghostwriter.nomoredomains.work/users/me',
+  'https://api.mesto.ghostwriter.nomoredomains.work/cards',
+  'https://api.mesto.ghostwriter.nomoredomains.work/signup',
+  'https://localhost:3000',
+  'http://localhost:3000',
+  'http://localhost:3000/users/me',
+  'https://localhost:3000/users/me',
+  'localhost:3000',
+  'http://localhost:3001',
+  'https://localhost:3001',
+];
+const corsOptions = {
+  origin: allowedCors,
+  optionsSuccessStatus: 200,
   credentials: true,
 };
 
-app.use('*', cors(options));
+app.use('*', cors(corsOptions));
 
 app.use(cookieParser());
 

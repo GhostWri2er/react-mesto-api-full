@@ -149,9 +149,9 @@ function App() {
   function handleLogin(data) {
     auth
       .login(data)
-      .then((data) => {
-        if (data) {
-          localStorage.setItem('jwt', data.token);
+      .then((res) => {
+        if (res) {
+          localStorage.setItem('jwt', res.token);
           setEmail(email);
           setLoggedIn(true);
           tokenCheck();
@@ -161,27 +161,29 @@ function App() {
       })
       .catch((err) => {
         setIsInfoToolTipOpen(true);
-        console.log('error', err);
+        console.log(`Ошибка авторизации: ${err}`);
       });
   }
   const handleRegister = (data) => {
     auth
       .register(data)
-      .then(() => {
-        setStatus('Ok');
-        history.push('/sign-in');
-        
+      .then((res) => {
+        console.log(res)
+        if (res) {
+          setStatus('Ok');
+          history.push('/sign-in');
+        }
       })
       .catch((err) => {
         setStatus('error');
-        console.log('error', err);
+        console.log('Ошибка регистрации', err);
       })
       .finally(() => {
         setIsInfoToolTipOpen(true);
       });
   };
 
-  const tokenCheck = () => {
+  function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth

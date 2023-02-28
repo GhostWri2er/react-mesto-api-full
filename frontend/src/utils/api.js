@@ -10,7 +10,6 @@ class Api {
   getProfile() {
     return fetch(`${this._baseUrl}users/me`, {
       method: 'GET',
-      mode: 'no-cors',
       headers: this._headers,
     }).then(this._checkRespose);
   }
@@ -20,7 +19,6 @@ class Api {
   getCards() {
     return fetch(`${this._baseUrl}cards`, {
       method: 'GET',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
     }).then(this._checkRespose);
@@ -31,7 +29,6 @@ class Api {
   editProfile(name, about) {
     return fetch(`${this._baseUrl}users/me`, {
       method: 'PATCH',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -46,7 +43,6 @@ class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}cards`, {
       method: 'POST',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -61,7 +57,6 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}cards/${id}`, {
       method: 'DELETE',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
     }).then(this._checkRespose);
@@ -72,7 +67,6 @@ class Api {
   addLike(id) {
     return fetch(`${this._baseUrl}cards/${id}/likes`, {
       method: 'PUT',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
     }).then(this._checkRespose);
@@ -83,7 +77,6 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._baseUrl}cards/${id}/likes`, {
       method: 'DELETE',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
     }).then(this._checkRespose);
@@ -94,7 +87,6 @@ class Api {
   updateAvatar(avatar) {
     return fetch(`${this._baseUrl}users/me/avatar`, {
       method: 'PATCH',
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -106,7 +98,6 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
-      mode: 'no-cors',
       headers: this._headers,
       credentials: 'include',
     }).then(this._checkRespose);
@@ -119,14 +110,13 @@ class Api {
       return res.json();
     }
 
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(`Ошибка check res: ${res.status}`);
   }
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.ghostwriter.nomoredomains.work/',
+  baseUrl: 'http://localhost:3000/',
   headers: {
-    "Accept": "application/json",
     "Content-Type": "application/json",
   },
 });
