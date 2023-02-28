@@ -88,14 +88,15 @@ function App() {
     api
       .getCards()
       .then((res) => {
+        console.log(res.data);
         setCards(
-          res.map((card) => ({
+          res.data.map((card) => ({
             _id: card._id,
             link: card.link,
             name: card.name,
             likes: card.likes,
             owner: card.owner,
-          })),
+          })),  
         );
       })
       .catch((err) => {
