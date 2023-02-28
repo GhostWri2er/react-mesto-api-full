@@ -10,6 +10,7 @@ class Api {
   getProfile() {
     return fetch(`${this._baseUrl}users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     }).then(this._checkRespose);
   }
@@ -118,6 +119,8 @@ const api = new Api({
   baseUrl: 'http://localhost:3000/',
   headers: {
     "Content-Type": "application/json",
+    authorization : `Bearer ${localStorage.getItem('jwt')}`
+    
   },
 });
 

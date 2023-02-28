@@ -57,7 +57,7 @@ function App() {
     api
       .getProfile()
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
       })
       .catch((err) => console.log('error', err));
   }, []);
@@ -87,9 +87,9 @@ function App() {
   useEffect(() => {
     api
       .getCards()
-      .then((data) => {
+      .then((res) => {
         setCards(
-          data.map((card) => ({
+          res.map((card) => ({
             _id: card._id,
             link: card.link,
             name: card.name,
@@ -190,7 +190,6 @@ function App() {
         .checkToken(jwt)
         .then((res) => {
           if (res) {
-            console.log(res);
             setLoggedIn(true);
             setEmail(res.data.email);
           }

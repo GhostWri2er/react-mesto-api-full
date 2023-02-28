@@ -6,7 +6,7 @@ const {
 
 const getCards = (req, res) => {
   Card.find({})
-    .populate(['owner', 'likes'])
+    .populate('owner')
     .then((cards) => res.send({ data: cards }))
     .catch(() => res.status(SERVER_ERROR).send({ message: 'На сервере произошла ошибка' }));
 };
