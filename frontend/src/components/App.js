@@ -23,6 +23,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  console.log(cards);
   const [loggedIn, setLoggedIn] = useState(false);
   const [status, setStatus] = useState('');
   const [email, setEmail] = useState('');
@@ -88,7 +89,6 @@ function App() {
     api
       .getCards()
       .then((res) => {
-        console.log(res.data);
         setCards(
           res.data.map((card) => ({
             _id: card._id,
@@ -116,7 +116,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -169,7 +169,6 @@ function App() {
     auth
       .register(data)
       .then((res) => {
-        console.log(res)
         if (res) {
           setStatus('Ok');
           history.push('/sign-in');
