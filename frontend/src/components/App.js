@@ -23,7 +23,6 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  console.log(cards);
   const [loggedIn, setLoggedIn] = useState(false);
   const [status, setStatus] = useState('');
   const [email, setEmail] = useState('');
